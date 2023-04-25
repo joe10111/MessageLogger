@@ -10,7 +10,6 @@ namespace MessageLogger
 		{
             NameOfDataBase = nameOfDataBase;
             ListOfUsers = new List<User> { };
-
         }
 
         public User AddUser()

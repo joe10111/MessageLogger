@@ -3,15 +3,14 @@ namespace MessageLogger
 {
 	public class Message
 	{
-		public string Content;
-		public DateTime CreatedAt;
+		public string Content { get; set; }
+		public DateTime CreatedAt { get; }
 		
 
-		public Message(string content, DateTime createdAt) 
+		public Message(string content) 
 		{
 			Content = content;
-			CreatedAt = createdAt;
-			
+			CreatedAt = DateTime.Now;
         }
 	}
 }

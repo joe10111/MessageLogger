@@ -15,9 +15,13 @@ UserDataBase userCollection = new UserDataBase("Test User Data Base");
 Console.WriteLine("Welcome to Message Logger! \n Enter `quit` to end program. \n When logged in type `log out` to log out");
 
 string response = "";
+
+User newUser; 
+
 while(response.ToLower() != "quit")
 {
-    User newUser = userCollection.AddUser();
+    // Left off getting Log In system Working, right now the system will make a new user when ever someone logs out insted of allowing them to decide what users to add. 
+        newUser = userCollection.AddUser();
 
     while(response.ToLower() != "log out")
     {
@@ -29,7 +33,7 @@ while(response.ToLower() != "quit")
             break;
         }
 
-        Message message = new Message(response, DateTime.Now);
+        Message message = new Message(response);
   
         newUser.AddMessage(message);
         newUser.LogMessages();
@@ -41,7 +45,7 @@ while(response.ToLower() != "quit")
         break;
     }
 
-    Console.WriteLine("Logged Out \n Would you like to log in again?");
+        newUser.LogOut();
         response = Console.ReadLine();
     
 }
