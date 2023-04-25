@@ -12,7 +12,7 @@ namespace MessageLogger
             ListOfUsers = new List<User> { };
         }
 
-        public User newUser()
+        public User NewUser()
         {
             User tempUser;
 
@@ -119,8 +119,6 @@ namespace MessageLogger
 
                 foreach (var message in user.ListOfMessages)
                 {
-                    
-
                     if(tempCount >= user.ListOfMessages.Count)
                     {
                         return tempListOfMessages;
@@ -129,8 +127,8 @@ namespace MessageLogger
                     {
                         tempListOfMessages.Add(message);
                     }
-                    tempCount += 1;
 
+                    tempCount += 1;
                 }
              }
 
@@ -138,4 +136,3 @@ namespace MessageLogger
         }
     }
 }
-

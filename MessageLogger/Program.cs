@@ -22,7 +22,7 @@ User currentUser; // make current user equak to who ever you log into.
 while(response.ToLower() != "quit")
 {
     response = "";
-    currentUser = userCollection.newUser();
+    currentUser = userCollection.NewUser();
 
     while(response.ToLower() != "log out")
     {
@@ -57,4 +57,5 @@ userCollection.QuitProgram();
 
 // add log out && quit producer
 
-
+// Keep quit and log out seprate states
+  // Adding logic for quitting and logging out
