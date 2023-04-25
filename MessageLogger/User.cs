@@ -15,6 +15,7 @@ namespace MessageLogger
             Name = name;
             UserName = userName;
             IsLoggedIn = false;
+            CountOfLogs = 0;
             ListOfMessages = new List<Message> { };
         }
 

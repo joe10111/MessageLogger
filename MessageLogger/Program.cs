@@ -11,7 +11,7 @@
 
 using MessageLogger;
 
-UserDataBase userCollection = new UserDataBase("Test User Data Base");
+MessageManager userCollection = new MessageManager("Test User Data Base");
 
 Console.WriteLine("Welcome to Message Logger! \n Enter `quit` to end program. \n When logged in type `log out` to log out");
 
@@ -21,7 +21,7 @@ User currentUser; // make current user equak to who ever you log into.
 
 while(response.ToLower() != "quit")
 {
-     
+    response = "";
     currentUser = userCollection.newUser();
 
     while(response.ToLower() != "log out")
@@ -34,23 +34,27 @@ while(response.ToLower() != "quit")
             break;
         }
 
+        if (response.ToLower() == "log out")
+        {
+            break;
+        }
+
         Message message = new Message(response);
   
         currentUser.AddMessage(message);
         currentUser.LogMessages();
     }
 
-
     if (response.ToLower() == "quit")
     {
         break;
     }
 
-    Console.WriteLine("Logged Out\n Type anything to continue...\n Type `quit` to exit...");
-    response = Console.ReadLine();
-    
+    userCollection.LogOutOfUser(currentUser.UserName);
 }
 
-Console.WriteLine(userCollection.GetAllUsers());
-Console.WriteLine("Program is quit");
+userCollection.QuitProgram();
+
+// add log out && quit producer
+
 
