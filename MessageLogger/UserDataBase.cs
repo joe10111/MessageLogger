@@ -12,6 +12,37 @@ namespace MessageLogger
             ListOfUsers = new List<User> { };
         }
 
+        public User newUser()
+        {
+            User tempUser;
+
+            if(ListOfUsers.Count() == 0)
+            {
+                tempUser = AddUser();
+                return tempUser;
+            }
+
+            Console.WriteLine("Users Found. Type in User Name to log-in or type anything but username to make new account: ");
+
+            var response = Console.ReadLine();
+
+            return LogInUser(response.ToLower());
+        }
+
+        public User LogInUser(string userName)
+        {
+            foreach (var user in ListOfUsers)
+            {
+                if (userName == user.UserName.ToLower())
+                {
+                    return user;
+                }
+            }
+
+            Console.WriteLine("Could not find user");
+            return AddUser(); 
+        }
+
         public User AddUser()
         {
             Console.WriteLine("Lets create a profile for you!");
@@ -25,6 +56,18 @@ namespace MessageLogger
             ListOfUsers.Add(newUser);
 
             return newUser;
+        }
+
+        public string GetAllUsers()
+        {
+            string temp = "";
+
+            foreach(var user in ListOfUsers)
+            {
+                temp += user.Name + "Logged " + user.CountOfLogs + " messages. ";
+            }
+
+            return temp.TrimEnd();
         }
     }
 }

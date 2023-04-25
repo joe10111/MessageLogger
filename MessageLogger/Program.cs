@@ -8,6 +8,7 @@
 // Message
 // - content of message
 // - time date of message
+
 using MessageLogger;
 
 UserDataBase userCollection = new UserDataBase("Test User Data Base");
@@ -16,12 +17,12 @@ Console.WriteLine("Welcome to Message Logger! \n Enter `quit` to end program. \n
 
 string response = "";
 
-User newUser; 
+User currentUser; // make current user equak to who ever you log into. 
 
 while(response.ToLower() != "quit")
 {
-    // Left off getting Log In system Working, right now the system will make a new user when ever someone logs out insted of allowing them to decide what users to add. 
-        newUser = userCollection.AddUser();
+     
+    currentUser = userCollection.newUser();
 
     while(response.ToLower() != "log out")
     {
@@ -35,8 +36,8 @@ while(response.ToLower() != "quit")
 
         Message message = new Message(response);
   
-        newUser.AddMessage(message);
-        newUser.LogMessages();
+        currentUser.AddMessage(message);
+        currentUser.LogMessages();
     }
 
 
@@ -45,10 +46,11 @@ while(response.ToLower() != "quit")
         break;
     }
 
-        newUser.LogOut();
-        response = Console.ReadLine();
+    Console.WriteLine("Logged Out\n Type anything to continue...\n Type `quit` to exit...");
+    response = Console.ReadLine();
     
 }
 
+Console.WriteLine(userCollection.GetAllUsers());
 Console.WriteLine("Program is quit");
 

@@ -5,6 +5,7 @@ namespace MessageLogger
 	{
         public string UserName { get; set; }
         public string Name { get; set; }
+        public int CountOfLogs { get; set; }
         public bool IsLoggedIn { get; set; }
 
         public List<Message> ListOfMessages;
@@ -17,31 +18,9 @@ namespace MessageLogger
             ListOfMessages = new List<Message> { };
         }
 
-        public void LogIn(string userName)
-        {
-            if(userName == UserName)
-            {
-                Console.WriteLine($"{userName} was found. Hi {Name}!");
-                IsLoggedIn = true;
-            } else {
-                while(userName != UserName)
-                {
-                    Console.WriteLine("That user name is not found, please log in with existing User Name");
-
-                    userName = Console.ReadLine();
-                }
-            }
-            
-        }
-
-        public void LogOut()
-        {
-            Console.WriteLine("Logged Out\nWould you like to log in again? Type anything to continue...\nType `quit` to exit...");
-            IsLoggedIn = false;
-        }
-
         public void AddMessage(Message message)
         {
+            CountOfLogs += 1;
             ListOfMessages.Add(message);
         }
 
